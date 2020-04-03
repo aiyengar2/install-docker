@@ -541,11 +541,7 @@ do_install() {
 				exit 1
 			fi
 			$sh_c "zypper -q -n install -f --force-resolution docker-$docker_pkg.$architecture"
-			if [ -d '/run/systemd/system' ]; then
-				$sh_c 'service docker start'
-			else
-				$sh_c 'systemctl start docker'
-			fi
+			$sh_c 'systemctl start docker'
 			)
 			echo_docker_as_nonroot
 			exit 0
